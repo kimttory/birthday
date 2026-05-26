@@ -13,8 +13,6 @@
 <meta property="og:image:height" content="315">
 <meta property="og:url" content="https://kimttory.github.io/birthday">
 <meta property="og:type" content="website">
-
-<!-- 카카오톡 추가 태그 -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="🌸 박정자 여사님 칠순 잔치">
 <meta name="twitter:description" content="6월 14일 토요일 낮 12시 · 서산 미다옴 · 함께해 주세요 💕">
@@ -31,10 +29,7 @@ body {
   display: flex; align-items: center; justify-content: center;
   padding: 2rem 1rem; min-height: 100vh;
 }
-.petals {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none; overflow: hidden; z-index: 0;
-}
+.petals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 0; }
 .petal { position: absolute; top: -30px; animation: fall linear infinite; }
 @keyframes fall {
   0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.85; }
@@ -69,8 +64,6 @@ body {
 .map-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; background: #fff0f3; border: 1.5px solid #ffb7c5; border-radius: 20px; padding: 5px 14px; font-size: 13px; color: #c06080; font-family: 'Noto Sans KR', sans-serif; cursor: pointer; text-decoration: none; transition: background 0.15s; }
 .map-btn:hover { background: #ffe0e8; }
 .q-text { font-family: 'Nanum Myeongjo', serif; font-size: 21px; color: #8b2252; text-align: center; margin-bottom: 1.5rem; line-height: 1.5; }
-.btn-sound { width: 100%; padding: 18px; background: linear-gradient(135deg, #ffb7c5, #ff8fab); color: #fff; border: none; border-radius: 18px; font-size: 20px; font-family: 'Nanum Myeongjo', serif; cursor: pointer; margin-bottom: 14px; box-shadow: 0 4px 16px rgba(255,100,130,0.35); display: flex; align-items: center; justify-content: center; gap: 12px; animation: pulse-pink 2s ease-in-out infinite; }
-@keyframes pulse-pink { 0%,100% { box-shadow: 0 4px 16px rgba(255,100,130,0.35); } 50% { box-shadow: 0 4px 26px rgba(255,100,130,0.6); } }
 .btn-yes { width: 100%; padding: 22px; background: linear-gradient(135deg, #51cf66, #2f9e44); color: #fff; border: none; border-radius: 18px; font-size: 22px; font-family: 'Nanum Myeongjo', serif; cursor: pointer; margin-bottom: 12px; box-shadow: 0 4px 16px rgba(40,167,69,0.3); display: flex; align-items: center; justify-content: center; gap: 12px; }
 .btn-yes:active { transform: scale(0.97); }
 .btn-no { width: 100%; padding: 16px; background: #fff; color: #bbb; border: 1.5px solid #eee; border-radius: 18px; font-size: 17px; font-family: 'Noto Sans KR', sans-serif; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
@@ -93,7 +86,9 @@ body {
 </style>
 </head>
 <body>
+
 <div class="petals" id="petals"></div>
+
 <div class="card">
   <div class="header">
     <span class="header-icon">🌸</span>
@@ -101,13 +96,23 @@ body {
     <p class="header-name">박정자 여사님</p>
     <p class="header-title">일흔 번째 봄을 맞이하며</p>
   </div>
+
   <div class="body">
+
+    <!-- 메인 화면 -->
     <div id="screen-main" class="screen active">
-      <div class="poem">봄꽃처럼 환하게 살아오신<br>칠십 년의 세월을<br>함께 축하해 주세요 🌷</div>
+      <div class="poem">
+        봄꽃처럼 환하게 살아오신<br>
+        칠십 년의 세월을<br>
+        함께 축하해 주세요 🌷
+      </div>
       <div class="info-wrap">
         <div class="info-item">
           <span class="info-emoji">📅</span>
-          <div class="info-text"><b>2025년 6월 14일 토요일</b>낮 12시 점심 식사</div>
+          <div class="info-text">
+            <b>2025년 6월 14일 토요일</b>
+            낮 12시 점심 식사
+          </div>
         </div>
         <div class="info-item">
           <span class="info-emoji">📍</span>
@@ -119,10 +124,17 @@ body {
         </div>
       </div>
       <p class="q-text">소중한 자리에<br>함께해 주시겠어요? 🌸</p>
-      <button class="btn-sound" onclick="speakMain()"><span style="font-size:28px">🔊</span><span>눌러서 안내 듣기</span></button>
-      <button class="btn-yes" onclick="rsvpYes()"><span style="font-size:28px">✅</span><span>참석할게요!</span></button>
-      <button class="btn-no" onclick="rsvpNo()"><span>😢</span><span>아쉽지만 못 갑니다</span></button>
+      <button class="btn-yes" onclick="rsvpYes()">
+        <span style="font-size:28px">✅</span>
+        <span>참석할게요!</span>
+      </button>
+      <button class="btn-no" onclick="rsvpNo()">
+        <span>😢</span>
+        <span>아쉽지만 못 갑니다</span>
+      </button>
     </div>
+
+    <!-- 감사 화면 -->
     <div id="screen-yes" class="screen">
       <div class="ty">
         <span class="ty-big">🌸</span>
@@ -134,6 +146,8 @@ body {
         </div>
       </div>
     </div>
+
+    <!-- 불참 화면 -->
     <div id="screen-no" class="screen">
       <div class="sorry">
         <span class="sorry-big">🙏</span>
@@ -142,9 +156,11 @@ body {
         <button class="btn-back" onclick="goBack()">← 다시 선택하기</button>
       </div>
     </div>
+
   </div>
 </div>
 
+<!-- Firebase -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getFirestore, doc, getDoc, setDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -169,6 +185,7 @@ body {
 </script>
 
 <script>
+// 꽃잎
 const petalsEl = document.getElementById('petals');
 ['🌸','🌺','🌷','🌼'].forEach(p => {
   for (let j = 0; j < 4; j++) {
@@ -182,28 +199,6 @@ const petalsEl = document.getElementById('petals');
   }
 });
 
-const mainText = "박정자 여사님 칠순 잔치에 초대합니다. 2025년 6월 14일 토요일 낮 12시, 충남 서산시 서해로 3577 4층 서산 미다옴에서 점심 식사를 함께할 예정입니다. 참석 가능하시면 초록색 큰 버튼을 눌러주세요.";
-
-if (window.speechSynthesis) {
-  window.speechSynthesis.getVoices();
-  window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
-}
-
-function makeUtterance(text) {
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ko-KR'; u.rate = 0.85; u.pitch = 1.0; u.volume = 1.0;
-  const voices = window.speechSynthesis.getVoices();
-  const koVoice = voices.find(v => v.lang.startsWith('ko'));
-  if (koVoice) u.voice = koVoice;
-  return u;
-}
-
-function speakMain() {
-  if (!window.speechSynthesis) { return; }
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(makeUtterance(mainText));
-}
-
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -212,20 +207,24 @@ function showScreen(id) {
 async function rsvpYes() {
   showScreen('screen-yes');
   document.getElementById('yes-count').textContent = '...';
-  if (window.speechSynthesis) { window.speechSynthesis.cancel(); window.speechSynthesis.speak(makeUtterance("감사합니다! 6월 14일 토요일 낮 12시, 서산 미다옴에서 뵙겠습니다.")); }
   const tryAdd = async () => {
-    if (window.addRsvp) { const total = await window.addRsvp(); document.getElementById('yes-count').textContent = total !== null ? total : '?'; }
-    else { setTimeout(tryAdd, 500); }
+    if (window.addRsvp) {
+      const total = await window.addRsvp();
+      document.getElementById('yes-count').textContent = total !== null ? total : '?';
+    } else {
+      setTimeout(tryAdd, 500);
+    }
   };
   tryAdd();
 }
 
 function rsvpNo() {
   showScreen('screen-no');
-  if (window.speechSynthesis) { window.speechSynthesis.cancel(); window.speechSynthesis.speak(makeUtterance("알려주셔서 감사합니다. 아쉽지만 마음만으로도 충분합니다.")); }
 }
 
-function goBack() { showScreen('screen-main'); }
+function goBack() {
+  showScreen('screen-main');
+}
 </script>
 </body>
 </html>
